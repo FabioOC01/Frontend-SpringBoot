@@ -1,28 +1,23 @@
-import React from 'react';
-import './App.css';
-import ListClientesComponent from './components/ListClientesComponent'; // Asegúrate de que la ruta sea correcta
-import HeaderComponent from './components/HeaderComponent';
-import FooterComponent from './components/FooterComponent';
-import {BrowserRouter,Routes,Route} from 'react-router-dom';
-import AddClienteComponent from './components/AddClienteComponent';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HeaderComponent } from "./components/HeaderComponent";
+import { ProductoComponent } from "./components/ProductoComponent";
+// Importa el componente ClienteComponent si ya está creado
+import { AddClienteComponent } from "./components/AddClienteComponent";
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <HeaderComponent />
-        <div className='container'>
-          <Routes>
-            <Route exact path='/' element={<ListClientesComponent />}></Route>
-            <Route  path='/clientes' element={<ListClientesComponent />}></Route>
-            <Route  path='/add-cliente' element={<AddClienteComponent />}></Route>
-            <Route  path='/edit-cliente/:id' element={<AddClienteComponent />}></Route>            
-          </Routes>
-        </div>
-        <FooterComponent/>
-      </BrowserRouter>
-    </div>
-  );
+    return (
+        <Router>
+            <HeaderComponent />
+            <div className="container mt-5">
+                <Routes>
+                    <Route path="/" element={<h1>Inicio</h1>} />
+                    <Route path="/clientes" element={<h1>Gestión de Clientes</h1>} /> {<AddClienteComponent />}
+                    <Route path="/productos" element={<ProductoComponent />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
